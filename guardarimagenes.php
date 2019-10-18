@@ -32,7 +32,9 @@
      $directorioSubida='C:/imgusers/';
         
       $contadorfiles=count( $_FILES['archivos']['name']);
-        //comprobamos tamaño//
+     //controlamos que solo se suban dos archivos
+        if($contadorfiles<=2){ 
+            //comprobamos tamaño//
         for($i=0;$i<$contadorfiles;$i++){
            $tamanioFichero= $_FILES['archivos']['size'][$i];
             $tamanotot=$tamanotot+$tamanioFichero/1024;
@@ -119,9 +121,12 @@
                 echo 'alguno de los ficheros excede 200';
             }
         }
-       
-    }
-
+            //si  contadorfiles es mayor q 2,si se suban mas de dos  ficheros
+       }else{
+            echo 'no se pueden subir mas de dos archivos';
+        }       
+     }
+    
 
 ?>
     <html><head><title>Entrada.php</title> </head><body><?php echo $contenido; ?></body></html>
